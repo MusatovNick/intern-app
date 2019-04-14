@@ -13,6 +13,12 @@
     },
     "intern-e2e": {
       "tags": []
+    },
+    "intern-api": {
+      "tags": []
+    },
+    "data": {
+      "tags": []
     }
   }
 }
