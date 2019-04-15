@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get, UseGuards, HttpCode } from '@nestjs/common';
 import { UserService } from '../auth/user.service';
-import { UserInterface, TokenInterface } from '@intern/data';
+import { UserInterface, AuthDataInterface } from '@intern/data';
 import { AuthService } from '../auth/auth.service';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -22,7 +22,7 @@ export class UserController {
   }
 
   @Post('signin')
-  signIn(@Body() signInDto: { email: string, password: string }): Promise<TokenInterface> {
+  signIn(@Body() signInDto: { email: string, password: string }): Promise<AuthDataInterface> {
     return this.authService.signIn(signInDto.email, signInDto.password);
   }
 
