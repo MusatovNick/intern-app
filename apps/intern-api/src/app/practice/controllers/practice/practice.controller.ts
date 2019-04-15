@@ -1,11 +1,13 @@
 import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-import { PracticeService } from './practice.service';
+import { PracticeService } from '../../services/practice/practice.service';
 import { PracticeInterface } from '@intern/data';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('practice')
 export class PracticeController {
-  constructor(private practiceService: PracticeService) {}
+  constructor(
+    private practiceService: PracticeService,
+  ) {}
 
   @Post()
   @UseGuards(AuthGuard())

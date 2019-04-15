@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { PracticeInterface } from '@intern/data';
-import { PRACTICE_SCHEMA_NAME } from './practice.schema';
+import { PRACTICE_SCHEMA_NAME } from '../../practice.schema';
 
 @Injectable()
 export class PracticeService {
