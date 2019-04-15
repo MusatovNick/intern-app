@@ -4,4 +4,5 @@ export interface AuthDataInterface {
     firstName: string,
     lastName: string,
     role: string,
+    id: string,
 }

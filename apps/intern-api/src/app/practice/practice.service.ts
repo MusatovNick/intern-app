@@ -10,12 +10,13 @@ export class PracticeService {
     @InjectModel(PRACTICE_SCHEMA_NAME) private readonly practiceModel: Model<PracticeInterface>,
   ) {}
 
-  async create(practiceDto: PracticeInterface): Promise<PracticeInterface> {
-    const created = new this.practiceModel(practiceDto);
-    return await created.save();
+  async create(practiceDto: PracticeInterface): Promise<PracticeInterface> {;
+    return await new this.practiceModel(practiceDto).save();
   }
 
   async findAll(): Promise<PracticeInterface[]> {
-    return await this.practiceModel.find().exec();
+    return await this.practiceModel
+      .find()
+      .exec();
   }
 }

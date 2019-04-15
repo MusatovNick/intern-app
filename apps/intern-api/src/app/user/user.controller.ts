@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, UseGuards, HttpCode } from '@nestjs/common';
+import { Controller, Post, Body, Get, UseGuards, Request, Delete, Param } from '@nestjs/common';
 import { UserService } from '../auth/user.service';
 import { UserInterface, AuthDataInterface } from '@intern/data';
 import { AuthService } from '../auth/auth.service';
@@ -16,6 +16,18 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @Get('intern')
+  @UseGuards(AuthGuard())
+  findAllInterns(@Request() req): Promise<UserInterface[]> {
+    return this.userService.findAllInterns(req.user.id);
+  }
+
+  @Get('teacher')
+  @UseGuards(AuthGuard())
+  findAllTeachers(): Promise<UserInterface[]> {
+    return this.userService.findAllTeachers();
+  }
+
   @Post('signup')
   create(@Body() userDto: UserInterface): Promise<UserInterface> {
     return this.userService.create(userDto);
@@ -30,5 +42,16 @@ export class UserController {
   @UseGuards(AuthGuard())
   verify(): boolean {
     return true;
+  }
+
+  @Post(':id')
+  @UseGuards(AuthGuard())
+  update(@Param('id') id: string, @Body() body: UserInterface): Promise<UserInterface> {
+    return this.userService.updateOne(id, body);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string): Promise<void> {
+    return this.userService.deleteOne(id);
   }
 }
