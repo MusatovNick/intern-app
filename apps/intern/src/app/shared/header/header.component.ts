@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth/services/auth.service';
 import { Observable } from 'rxjs';
-import { AuthDataInterface, UserInterface } from '@intern/data';
-import { Router } from '@angular/router';
+import { AuthDataInterface } from '@intern/data';
+import { UserDataService } from '../../auth/services/user-data.service';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,17 +11,15 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public user$: Observable<AuthDataInterface>;
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private userDataService: UserDataService, private auth: AuthService) { }
 
   ngOnInit() {
-    this.user$ = this.auth.getUserData$();
-    this.auth.getUserData$().subscribe(value => console.log(value));
+    this.user$ = this.userDataService.loadUser$();
+    this.userDataService.loadUser$().subscribe(value => console.log(value));
   }
 
-  public logout(): void {
-    this.router.navigateByUrl('/login');
-    localStorage.removeItem('token');
-    console.log(localStorage);
+  public logoutUser() {
+    this.auth.logout();
   }
 
 }

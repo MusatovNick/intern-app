@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { BackendService } from '../../backend/backend.service';
 import { AuthDataInterface } from '@intern/data';
 import { UserDataService } from './user-data.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
   constructor(
     private backendService: BackendService,
-    private userDataService: UserDataService
-  ) {}
+    private userDataService: UserDataService,
+    private router: Router
+  ) {
+  }
 
   public singIn$({ email, password }: { email: string; password: string; }): Observable<AuthDataInterface> {
     return this.backendService.post$<AuthDataInterface>(`/user/signin`, { email, password })
@@ -24,10 +27,8 @@ export class AuthService {
     return this.backendService.post$<boolean>(`/user/verify`);
   }
 
-
-  public getUserData$(): Observable<AuthDataInterface> {
-    console.log(localStorage);
-    return this.userDataService.loadUser$();
+  public logout(): void {
+    this.router.navigateByUrl('/login');
+    localStorage.removeItem('token');
   }
-
 }
