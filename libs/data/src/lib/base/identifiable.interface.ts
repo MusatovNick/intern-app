@@ -1,3 +1,3 @@
 export interface IdentifiableInterface {
-  _id: String
+  _id: string
 }

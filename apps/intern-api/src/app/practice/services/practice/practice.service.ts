@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { PracticeInterface } from '@intern/data';
-import { PRACTICE_SCHEMA_NAME } from './practice.schema';
+import { PRACTICE_SCHEMA_NAME } from '../../schema/practice.schema';
 
 @Injectable()
 export class PracticeService {
@@ -10,12 +10,14 @@ export class PracticeService {
     @InjectModel(PRACTICE_SCHEMA_NAME) private readonly practiceModel: Model<PracticeInterface>,
   ) {}
 
-  async create(practiceDto: PracticeInterface): Promise<PracticeInterface> {
-    const created = new this.practiceModel(practiceDto);
-    return await created.save();
+  async create(practiceDto: PracticeInterface): Promise<PracticeInterface> {;
+    return await new this.practiceModel(practiceDto)
+      .save();
   }
 
   async findAll(): Promise<PracticeInterface[]> {
-    return await this.practiceModel.find().exec();
+    return await this.practiceModel
+      .find()
+      .exec();
   }
 }
