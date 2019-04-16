@@ -11,8 +11,8 @@ export class TaskController {
 
   @Post()
   @UseGuards(AuthGuard())
-  create(@Body() practiceDto: TaskInterface): Promise<TaskInterface> {
-    return this.taskService.create(practiceDto);
+  create(@Body() taskDto: TaskInterface): Promise<TaskInterface> {
+    return this.taskService.create(taskDto);
   }
   
   @Get()

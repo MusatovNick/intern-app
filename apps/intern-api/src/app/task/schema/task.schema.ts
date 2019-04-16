@@ -6,6 +6,7 @@ export const TaskSchema = new mongoose.Schema(schema<TaskInterface>({
   practiceId: String,
   userId: String,
   status: String,
+  curatorName: String,
 }));
 
 export const TASK_SCHEMA_NAME = 'task';
