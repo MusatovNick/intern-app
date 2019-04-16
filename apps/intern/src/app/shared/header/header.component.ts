@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthDataInterface } from '@intern/data';
 import { AuthService } from '../../auth/services/auth.service';
+import { filter, map, take } from 'rxjs/operators';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-header',

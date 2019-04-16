@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { filter, map, take, tap, toArray } from 'rxjs/operators';
 import { BackendService } from '../../backend/backend.service';
 import { AuthDataInterface } from '@intern/data';
 import { Router } from '@angular/router';
@@ -14,11 +14,12 @@ export class AuthService {
   ) {
   }
 
-  public singIn$({ email, password }: { email: string; password: string; }): Observable<AuthDataInterface> {
+  public singIn$({ email, password }: { email: string; password: string; }): Observable<AuthDataInterface[]> {
     return this.backendService.post$<AuthDataInterface>(`/user/signin`, { email, password })
       .pipe(
         tap(({ token }: AuthDataInterface) => localStorage.setItem('token', token)),
-        tap((userItem: AuthDataInterface) => this.userData$.next(userItem))
+        filter((userInterFace: AuthDataInterface) => userInterFace.email !== undefined),
+        tap((userItem: AuthDataInterface) => this.userData$.next(userItem)),
       );
   }
 
