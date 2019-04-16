@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BackendService } from '../../backend/backend.service';
 import { AuthDataInterface } from '@intern/data';
-import { UserDataService } from './user-data.service';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
+  public userData$: BehaviorSubject<AuthDataInterface> = new BehaviorSubject<AuthDataInterface>(null);
   constructor(
     private backendService: BackendService,
-    private userDataService: UserDataService,
     private router: Router
   ) {
   }
@@ -20,6 +18,7 @@ export class AuthService {
     return this.backendService.post$<AuthDataInterface>(`/user/signin`, { email, password })
       .pipe(
         tap(({ token }: AuthDataInterface) => localStorage.setItem('token', token)),
+        tap((userItem: AuthDataInterface) => this.userData$.next(userItem))
       );
   }
 

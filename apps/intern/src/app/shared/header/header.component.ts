@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthDataInterface } from '@intern/data';
-import { UserDataService } from '../../auth/services/user-data.service';
 import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
@@ -11,11 +10,10 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   public user$: Observable<AuthDataInterface>;
-  constructor(private userDataService: UserDataService, private auth: AuthService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.user$ = this.userDataService.loadUser$();
-    this.userDataService.loadUser$().subscribe(value => console.log(value));
+    this.user$ = this.auth.userData$;
   }
 
   public logoutUser() {
