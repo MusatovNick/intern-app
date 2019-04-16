@@ -8,6 +8,7 @@ import { routing } from './app.routing';
 import { BackendModule } from './backend/backend.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeComponent } from './pages/home/home.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
@@ -16,10 +17,11 @@ import { HomeComponent } from './pages/home/home.component';
     routing,
     BackendModule,
     AuthModule,
+    SharedModule
   ],
   declarations: [
     AppComponent,
-    LoginComponent, 
+    LoginComponent,
     HomeComponent,
   ],
   providers: [],
