@@ -14,7 +14,7 @@ export class AuthService {
   ) {
   }
 
-  public singIn$({ email, password }: { email: string; password: string; }): Observable<AuthDataInterface[]> {
+  public singIn$({ email, password }: { email: string; password: string; }): Observable<AuthDataInterface> {
     return this.backendService.post$<AuthDataInterface>(`/user/signin`, { email, password })
       .pipe(
         tap(({ token }: AuthDataInterface) => localStorage.setItem('token', token)),
@@ -30,5 +30,6 @@ export class AuthService {
   public logout(): void {
     this.router.navigateByUrl('/login');
     localStorage.removeItem('token');
+    this.userData$.next(null);
   }
 }
