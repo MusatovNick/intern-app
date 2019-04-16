@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { TaskController } from './controllers/task/task.controller';
 import { TaskService } from './services/task/task.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TASK_SCHEMA_NAME, TaskSchema } from './schema/task.schema';
@@ -10,11 +9,7 @@ import { TASK_SCHEMA_NAME, TaskSchema } from './schema/task.schema';
       { name: TASK_SCHEMA_NAME, schema: TaskSchema },
     ]),
   ],
-  controllers: [
-    TaskController,
-  ],
-  providers: [
-    TaskService,
-  ],
+  providers: [TaskService],
+  exports: [TaskService],
 })
 export class TaskModule {}

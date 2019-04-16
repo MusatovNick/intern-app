@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-import { PracticeService } from '../../services/practice/practice.service';
+import { PracticeService } from '../../practice/services/practice/practice.service';
 import { PracticeInterface } from '@intern/data';
 import { AuthGuard } from '@nestjs/passport';
 

@@ -1,7 +1,7 @@
 import { Controller, Post, UseGuards, Get, Body } from '@nestjs/common';
 import { TaskInterface } from '@intern/data';
-import { TaskService } from '../../services/task/task.service';
 import { AuthGuard } from '@nestjs/passport';
+import { TaskService } from '../../task/services/task/task.service';
 
 @Controller('task')
 export class TaskController {

@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get, UseGuards, Request, Delete, Param } from '@nestjs/common';
-import { UserService } from '../../../auth/user.service';
+import { UserService } from '../../auth/user.service';
 import { UserInterface, AuthDataInterface } from '@intern/data';
-import { AuthService } from '../../../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('user')
@@ -19,7 +19,7 @@ export class UserController {
   @Get('intern')
   @UseGuards(AuthGuard())
   findAllInterns(@Request() req): Promise<UserInterface[]> {
-    return this.userService.findAllInterns(req.user.id);
+    return this.userService.findAllInternsByTeacherId(req.user.id);
   }
 
   @Get('teacher')

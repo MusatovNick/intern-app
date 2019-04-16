@@ -6,3 +6,4 @@ export { UserInterface } from './lib/interfaces/user.interface';
 export { SessionInterface } from './lib/interfaces/session.interface';
 export { AuthDataInterface } from './lib/interfaces/auth-data.interface';
 export { TaskInterface } from './lib/interfaces/task.interface';
+export { ResultInterface } from './lib/interfaces/result.interface';

@@ -22,7 +22,7 @@ export class UserService {
       .exec();
   }
 
-  async findAllInterns(teacherId: string): Promise<UserInterface[]> {
+  async findAllInternsByTeacherId(teacherId: string): Promise<UserInterface[]> {
     return await this.userModel
       .find(query<UserInterface>({ role: RoleType.INTERN, teacherId: teacherId }))
       .select(selector<UserInterface>('firstName','lastName','email'))

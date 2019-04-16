@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { PracticeInterface } from '@intern/data';
-import { PRACTICE_SCHEMA_NAME } from '../../practice.schema';
+import { PRACTICE_SCHEMA_NAME } from '../../schema/practice.schema';
 
 @Injectable()
 export class PracticeService {
@@ -11,7 +11,8 @@ export class PracticeService {
   ) {}
 
   async create(practiceDto: PracticeInterface): Promise<PracticeInterface> {;
-    return await new this.practiceModel(practiceDto).save();
+    return await new this.practiceModel(practiceDto)
+      .save();
   }
 
   async findAll(): Promise<PracticeInterface[]> {
