@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { TASK_SCHEMA_NAME } from '../../schema/task.schema';
 import { TaskInterface } from '@intern/data';
+import { query } from '../../../helper/query.helper';
 
 @Injectable()
 export class TaskService {
@@ -17,6 +18,12 @@ export class TaskService {
   async findAll(): Promise<TaskInterface[]> {
     return await this.taskModel
       .find()
+      .exec();
+  }
+
+  async findByUserId(userId: string): Promise<TaskInterface[]> {
+    return await this.taskModel
+      .find(query<TaskInterface>({ userId }))
       .exec();
   }
 }
