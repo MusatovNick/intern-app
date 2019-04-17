@@ -1,6 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthDataDto } from '@intern/data';
 import { AuthService } from '../../auth/services/auth.service';

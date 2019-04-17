@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { BackendService } from '../../backend/backend.service';
 import { filter, tap } from 'rxjs/operators';
 import { BackendService } from '../../backend/backend.service';
 import { AuthDataDto } from '@intern/data';
