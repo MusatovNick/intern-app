@@ -1,7 +1,7 @@
 import { Controller, Post, UseGuards, Get, Body } from '@nestjs/common';
 import { ResultService } from '../../result/services/result/result.service';
 import { AuthGuard } from '@nestjs/passport';
-import { ResultInterface } from '@intern/data';
+import { ResultDto } from '@intern/data';
 
 @Controller('result')
 export class ResultController {
@@ -11,13 +11,13 @@ export class ResultController {
 
   @Post()
   @UseGuards(AuthGuard())
-  create(@Body() resultDto: ResultInterface): Promise<ResultInterface> {
+  create(@Body() resultDto: ResultDto): Promise<ResultDto> {
     return this.resultService.create(resultDto);
   }
   
   @Get()
   @UseGuards(AuthGuard())
-  findAll(): Promise<ResultInterface[]> {
+  findAll(): Promise<ResultDto[]> {
     return this.resultService.findAll();
   }
 }

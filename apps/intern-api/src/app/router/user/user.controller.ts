@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get, UseGuards, Request, Delete, Param } from '@nestjs/common';
 import { UserService } from '../../auth/user.service';
-import { UserInterface, AuthDataInterface, TaskInterface, ResultInterface } from '@intern/data';
+import { UserDto, AuthDataDto, TaskDto, ResultDto } from '@intern/data';
 import { AuthService } from '../../auth/auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { TaskService } from '../../task/services/task/task.service';
@@ -16,39 +16,39 @@ export class UserController {
   ) {}
 
   @Get()
-  findAll(): Promise<UserInterface[]> {
+  findAll(): Promise<UserDto[]> {
     return this.userService.findAll();
   }
 
   @Get(':id/tasks')
-  findUserTasks(@Param('id') id: string): Promise<TaskInterface[]> {
+  findUserTasks(@Param('id') id: string): Promise<TaskDto[]> {
     return this.taskService.findByUserId(id);
   }
 
   @Get(':id/results')
-  findUserResults(@Param('id') id: string): Promise<ResultInterface[]> {
+  findUserResults(@Param('id') id: string): Promise<ResultDto[]> {
     return this.resultService.findByUserId(id);
   }
 
   @Get('intern')
   @UseGuards(AuthGuard())
-  findAllInterns(@Request() req): Promise<UserInterface[]> {
+  findAllInterns(@Request() req): Promise<UserDto[]> {
     return this.userService.findAllInternsByTeacherId(req.user.id);
   }
 
   @Get('teacher')
   @UseGuards(AuthGuard())
-  findAllTeachers(): Promise<UserInterface[]> {
+  findAllTeachers(): Promise<UserDto[]> {
     return this.userService.findAllTeachers();
   }
 
   @Post('signup')
-  create(@Body() userDto: UserInterface): Promise<UserInterface> {
+  create(@Body() userDto: UserDto): Promise<UserDto> {
     return this.userService.create(userDto);
   }
 
   @Post('signin')
-  signIn(@Body() signInDto: { email: string, password: string }): Promise<AuthDataInterface> {
+  signIn(@Body() signInDto: { email: string, password: string }): Promise<AuthDataDto> {
     return this.authService.signIn(signInDto.email, signInDto.password);
   }
 
@@ -60,7 +60,7 @@ export class UserController {
 
   @Post(':id')
   @UseGuards(AuthGuard())
-  update(@Param('id') id: string, @Body() body: UserInterface): Promise<UserInterface> {
+  update(@Param('id') id: string, @Body() body: UserDto): Promise<UserDto> {
     return this.userService.updateOne(id, body);
   }
 

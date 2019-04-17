@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map, take, tap, toArray } from 'rxjs/operators';
+import { filter, tap } from 'rxjs/operators';
 import { BackendService } from '../../backend/backend.service';
-import { AuthDataInterface } from '@intern/data';
+import { AuthDataDto } from '@intern/data';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  public userData$: BehaviorSubject<AuthDataInterface> = new BehaviorSubject<AuthDataInterface>(null);
+  public userData$: BehaviorSubject<AuthDataDto> = new BehaviorSubject<AuthDataDto>(null);
   constructor(
     private backendService: BackendService,
     private router: Router
-  ) {
-  }
+  ) {}
 
-  public singIn$({ email, password }: { email: string; password: string; }): Observable<AuthDataInterface> {
-    return this.backendService.post$<AuthDataInterface>(`/user/signin`, { email, password })
+  public singIn$({ email, password }: { email: string; password: string; }): Observable<AuthDataDto> {
+    return this.backendService.post$<AuthDataDto>(`/user/signin`, { email, password })
       .pipe(
-        tap(({ token }: AuthDataInterface) => localStorage.setItem('token', token)),
-        filter((userInterFace: AuthDataInterface) => userInterFace.email !== undefined),
-        tap((userItem: AuthDataInterface) => this.userData$.next(userItem)),
+        tap(({ token }: AuthDataDto) => localStorage.setItem('token', token)),
+        filter((userInterFace: AuthDataDto) => userInterFace.email !== undefined),
+        tap((userItem: AuthDataDto) => this.userData$.next(userItem)),
       );
   }
 

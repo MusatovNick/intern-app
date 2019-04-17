@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose';
-import { PracticeInterface } from '@intern/data';
+import { PracticeDto } from '@intern/data';
 import { schema } from '../../helper/schema.helper';
 
-export const PracticeSchema = new mongoose.Schema(schema<PracticeInterface>({
+export const PracticeSchema = new mongoose.Schema(schema<PracticeDto>({
   name: String,
   description: String,
   sample: String,

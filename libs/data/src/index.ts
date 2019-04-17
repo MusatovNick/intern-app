@@ -1,9 +1,8 @@
 export { RoleType } from './lib/enums/role-type.enum';
 export { TaskStatus } from './lib/enums/task-status.enum';
-export { IdentifiableInterface } from './lib/base/identifiable.interface';
-export { PracticeInterface } from './lib/interfaces/practice.interface';
-export { UserInterface } from './lib/interfaces/user.interface';
-export { SessionInterface } from './lib/interfaces/session.interface';
-export { AuthDataInterface } from './lib/interfaces/auth-data.interface';
-export { TaskInterface } from './lib/interfaces/task.interface';
-export { ResultInterface } from './lib/interfaces/result.interface';
+export { Identifiable } from './lib/base/identifiable.dto';
+export { PracticeDto } from './lib/dto/practice.dto';
+export { UserDto } from './lib/dto/user.dto';
+export { AuthDataDto } from './lib/dto/auth-data.dto';
+export { TaskDto } from './lib/dto/task.dto';
+export { ResultDto } from './lib/dto/result.dto';

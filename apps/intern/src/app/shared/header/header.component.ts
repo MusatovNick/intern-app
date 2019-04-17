@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthDataInterface } from '@intern/data';
+import { AuthDataDto } from '@intern/data';
 import { AuthService } from '../../auth/services/auth.service';
 import { filter, map, take } from 'rxjs/operators';
 import { isNullOrUndefined } from 'util';
@@ -11,7 +11,7 @@ import { isNullOrUndefined } from 'util';
   styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnInit {
-  public user$: Observable<AuthDataInterface>;
+  public user$: Observable<AuthDataDto>;
   constructor(private auth: AuthService) { }
 
   ngOnInit() {

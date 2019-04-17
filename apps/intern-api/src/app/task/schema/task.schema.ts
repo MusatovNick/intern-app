@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose';
 import { schema } from '../../helper/schema.helper';
-import { TaskInterface } from '@intern/data';
+import { TaskDto } from '@intern/data';
 
-export const TaskSchema = new mongoose.Schema(schema<TaskInterface>({
+export const TaskSchema = new mongoose.Schema(schema<TaskDto>({
   practiceId: String,
   userId: String,
   status: String,

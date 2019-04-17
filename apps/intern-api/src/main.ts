@@ -14,6 +14,7 @@ async function bootstrap() {
   app.enableCors();
   const port = process.env.port || 3333;
 
+  /* 
   const options = new DocumentBuilder()
     .setTitle('Intern')
     .setDescription('API description')
@@ -21,7 +22,8 @@ async function bootstrap() {
     .addTag('intern')
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api', app, document); 
+  */
 
   await app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/${globalPrefix}`);
