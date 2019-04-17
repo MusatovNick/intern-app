@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import { BackendService } from '../../backend/backend.service';
 import { AuthDataDto } from '@intern/data';
 import { Router } from '@angular/router';
+import { LocalStorage } from '../../configs/local-storage';
+import { AuthDataService } from './auth-data.service';
 
 @Injectable()
 export class AuthService {
-  public userData$: BehaviorSubject<AuthDataDto> = new BehaviorSubject<AuthDataDto>(null);
   constructor(
     private backendService: BackendService,
+    private authDataService: AuthDataService,
     private router: Router
   ) {
   }
@@ -17,9 +19,12 @@ export class AuthService {
   public singIn$({ email, password }: { email: string; password: string; }): Observable<AuthDataDto> {
     return this.backendService.post$<AuthDataDto>(`/user/signin`, { email, password })
       .pipe(
-        tap(({ token }: AuthDataDto) => localStorage.setItem('token', token)),
+        tap(({ token }: AuthDataDto) => localStorage.setItem(LocalStorage.TOKEN, token)),
+        tap((authDataDto: AuthDataDto)=> {
+          const localStorageUser: string = JSON.stringify(authDataDto);
+          return localStorage.setItem(LocalStorage.DATA, localStorageUser);
+        }),
         filter((userInterFace: AuthDataDto) => userInterFace.email !== undefined),
-        tap((userItem: AuthDataDto) => this.userData$.next(userItem)),
       );
   }
 
@@ -29,7 +34,8 @@ export class AuthService {
 
   public logout(): void {
     this.router.navigate(['/login']);
-    localStorage.removeItem('token');
-    this.userData$.next(null);
+    localStorage.removeItem(LocalStorage.TOKEN);
+    localStorage.removeItem(LocalStorage.DATA);
+    this.authDataService.userData$.next(null);
   }
 }

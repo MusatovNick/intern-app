@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthDataDto } from '@intern/data';
 import { AuthService } from '../../auth/services/auth.service';
+import { AuthDataService } from '../../auth/services/auth-data.service';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +12,14 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   public user$: Observable<AuthDataDto>;
-  constructor(private auth: AuthService) { }
+  constructor(private authService: AuthService, private authDataService: AuthDataService) { }
 
   ngOnInit() {
-    this.user$ = this.auth.userData$;
+    this.user$ = this.authDataService.getUserData$();
   }
 
   public logoutUser() {
-    this.auth.logout();
+    this.authService.logout();
   }
 
 }
