@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { AuthDataInterface } from '@intern/data';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthDataDto } from '@intern/data';
 import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { AuthService } from '../../auth/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
-  public user$: BehaviorSubject<AuthDataInterface>;
+  public user$: Observable<AuthDataDto>;
   constructor(private auth: AuthService) { }
 
   ngOnInit() {

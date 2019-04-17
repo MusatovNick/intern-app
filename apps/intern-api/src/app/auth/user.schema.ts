@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose';
 import { schema } from '../helper/schema.helper';
-import { UserInterface } from '@intern/data';
+import { UserDto } from '@intern/data';
 
-export const UserSchema = new mongoose.Schema(schema<UserInterface>({
+export const UserSchema = new mongoose.Schema(schema<UserDto>({
   firstName: String,
   lastName: String,
   email: String,

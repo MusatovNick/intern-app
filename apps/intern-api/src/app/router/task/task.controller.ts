@@ -1,7 +1,8 @@
 import { Controller, Post, UseGuards, Get, Body } from '@nestjs/common';
-import { TaskInterface } from '@intern/data';
-import { TaskService } from '../../services/task/task.service';
+import { TaskDto } from '@intern/data';
 import { AuthGuard } from '@nestjs/passport';
+import { TaskService } from '../../task/services/task/task.service';
+import { ApiCreatedResponse } from '@nestjs/swagger';
 
 @Controller('task')
 export class TaskController {
@@ -11,13 +12,13 @@ export class TaskController {
 
   @Post()
   @UseGuards(AuthGuard())
-  create(@Body() taskDto: TaskInterface): Promise<TaskInterface> {
+  async create(@Body() taskDto: TaskDto): Promise<TaskDto> {
     return this.taskService.create(taskDto);
   }
   
   @Get()
   @UseGuards(AuthGuard())
-  findAll(): Promise<TaskInterface[]> {
+  async findAll(): Promise<TaskDto[]> {
     return this.taskService.findAll();
   }
 }

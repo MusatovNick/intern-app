@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PracticeService } from './services/practice/practice.service';
-import { PracticeSchema, PRACTICE_SCHEMA_NAME } from './practice.schema';
-import { PracticeController } from './controllers/practice/practice.controller';
+import { PracticeSchema, PRACTICE_SCHEMA_NAME } from './schema/practice.schema';
 import { AuthModule } from '../auth/auth.module';
 
 @Module({
@@ -13,6 +12,6 @@ import { AuthModule } from '../auth/auth.module';
     AuthModule,
   ],
   providers: [PracticeService],
-  controllers: [PracticeController],
+  exports: [PracticeService],
 })
 export class PracticeModule {}
