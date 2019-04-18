@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { RESULT_SCHEMA_NAME } from '../../schema/result.schema';
 import { ResultDto } from '@intern/data';
@@ -25,6 +25,12 @@ export class ResultService {
   async findByUserId(authorId: string): Promise<ResultDto[]> {
     return await this.resultModel
       .find(query<ResultDto>({ authorId }))
+      .exec();
+  }
+
+  async findById(id: string): Promise<ResultDto> {
+    return await this.resultModel
+      .findById(id)
       .exec();
   }
 }

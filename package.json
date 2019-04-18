@@ -49,6 +49,7 @@
     "passport": "^0.4.0",
     "passport-http-bearer": "^1.0.1",
     "passport-jwt": "^4.0.0",
+    "puppeteer": "^1.14.0",
     "rxjs": "6.3.3",
     "swagger-ui-express": "^4.0.2",
     "zone.js": "^0.8.26"
