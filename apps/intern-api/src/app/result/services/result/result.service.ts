@@ -16,6 +16,18 @@ export class ResultService {
       .save();
   }
 
+  async findById(id: string): Promise<ResultDto> {
+    const item: ResultDto = await this.resultModel
+      .findById(id)
+      .exec();
+    
+    if (!item) {
+      throw new NotFoundException('Result with such id was not found')
+    }
+
+    return item;
+  }
+
   async findAll(): Promise<ResultDto[]> {
     return await this.resultModel
       .find()
@@ -25,12 +37,6 @@ export class ResultService {
   async findByUserId(authorId: string): Promise<ResultDto[]> {
     return await this.resultModel
       .find(query<ResultDto>({ authorId }))
-      .exec();
-  }
-
-  async findById(id: string): Promise<ResultDto> {
-    return await this.resultModel
-      .findById(id)
       .exec();
   }
 }

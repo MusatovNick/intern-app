@@ -36,7 +36,12 @@ export class RunnerService {
   private async makeRun(page: any, result: ResultDto, practice: PracticeDto): Promise<RunResultDto> {
     try {
       await page.evaluate(
-        (resultI: ResultDto, practiceI: PracticeDto) => eval([resultI.code, practiceI.test].join(';\n')),
+        (resultI: ResultDto, practiceI: PracticeDto) => {
+          eval(resultI.code)
+          if (!eval(practiceI.test)) {
+            throw new Error('Test fails');
+          }
+        },
         result,
         practice,
       )

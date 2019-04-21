@@ -1,5 +1,5 @@
 import { Controller, Post, UseGuards, Param } from '@nestjs/common';
-import { RunnerService } from '../../../runner/service/runner/runner.service';
+import { RunnerService } from '../../runner/service/runner/runner.service';
 import { AuthGuard } from '@nestjs/passport';
 import { RunResultDto } from '@intern/data';
 
