@@ -21,6 +21,12 @@ export class TaskService {
       .exec();
   }
 
+  async findById(id: string): Promise<TaskDto> {
+    return await this.taskModel
+      .findById(id)
+      .exec();
+  }
+
   async findByUserId(userId: string): Promise<TaskDto[]> {
     return await this.taskModel
       .find(query<TaskDto>({ userId }))

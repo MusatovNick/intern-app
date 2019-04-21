@@ -20,4 +20,10 @@ export class PracticeService {
       .find()
       .exec();
   }
+
+  async findById(id: string): Promise<PracticeDto> {
+    return await this.practiceModel
+      .findById()
+      .exec();
+  }
 }
