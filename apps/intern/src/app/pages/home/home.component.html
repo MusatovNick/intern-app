@@ -1,22 +1,14 @@
 <app-header></app-header>
 <div class="core-container">
   <div class="menu-bar">
-    <div class="menu-container">
-      <div class="menu-item">
-        <i class="fa fa-thumb-tack"></i>
-      </div>
-      <div class="menu-item">
-        <i class="fa fa-bar-chart"></i>
-      </div>
-      <div class="menu-item">
-        <i class="fa fa-book"></i>
-      </div>
-    </div>
+    <a routerLink="boards" class="btn btn-secondary">boards</a>
+    <a routerLink="practices" class="btn btn-secondary">practices</a>
+    <a routerLink="analitics" class="btn btn-secondary">analitics</a>
   </div>
   <div class="list-bar">
     <!-- There should be list view -->
+    <router-outlet></router-outlet>
   </div>
   <div class="main-bar">
-
   </div>
 </div>

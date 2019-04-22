@@ -14,6 +14,9 @@ import { NxModule } from '@nrwl/nx';
 import { environment } from '../environments/environment';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { reducers } from './+state/global.reducers';
+import { BoardsModule } from './modules/boards/boards.module';
+import { PracticesModule } from './modules/practices/practices.module';
+import { AnaliticsModule } from './modules/analitics/analitics.module';
 
 @NgModule({
   imports: [
@@ -23,6 +26,9 @@ import { reducers } from './+state/global.reducers';
     BackendModule,
     AuthModule,
     SharedModule,
+    BoardsModule,
+    PracticesModule,
+    AnaliticsModule,
     NxModule.forRoot(),
     StoreModule.forRoot(
       reducers,
