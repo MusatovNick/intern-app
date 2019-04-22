@@ -1,9 +1,12 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { RunResultDto, ResultDto, RunStatus, TaskDto, PracticeDto } from '@intern/data';
 import { ResultService } from '../../../result/services/result/result.service';
+import { Model } from 'mongoose';
 import * as puppeteer from 'puppeteer';
 import { TaskService } from '../../../task/services/task/task.service';
 import { PracticeService } from '../../../practice/services/practice/practice.service';
+import { RUN_RESULT_SCHEMA_NAME } from '../../schema/run-result.schema';
+import { InjectModel } from '@nestjs/mongoose';
 
 // tslint:disable:no-eval
 @Injectable()
@@ -12,6 +15,7 @@ export class RunnerService {
     private resultService: ResultService,
     private taskService: TaskService,
     private practiceService: PracticeService,
+    @InjectModel(RUN_RESULT_SCHEMA_NAME) private readonly runResultModel: Model<RunResultDto>,
   ) {}
 
   public async runResult(resultId: string): Promise<RunResultDto> {
@@ -36,9 +40,9 @@ export class RunnerService {
   private async makeRun(page: any, result: ResultDto, practice: PracticeDto): Promise<RunResultDto> {
     try {
       await page.evaluate(
-        (resultI: ResultDto, practiceI: PracticeDto) => {
-          eval(resultI.code)
-          if (!eval(practiceI.test)) {
+        ({ code }: ResultDto, { test }: PracticeDto) => {
+          eval(code)
+          if (!eval(test)) {
             throw new Error('Test fails');
           }
         },
@@ -46,9 +50,16 @@ export class RunnerService {
         practice,
       )
     } catch (e) {
-      return { status: RunStatus.FAIL, errors: e.message };
+      return this.saveRunResult({ status: RunStatus.FAIL, errorMessage: e.message, resultId: result._id });
     }
 
-    return { status: RunStatus.SUCCESS, errors: null };
+    return this.saveRunResult({ status: RunStatus.SUCCESS, errorMessage: null, resultId: result._id  });
+  }
+
+  private async saveRunResult(
+    runResult: Pick<RunResultDto, 'status' | 'errorMessage' | 'description' | 'resultId'>
+  ):  Promise<RunResultDto> {
+    return await new this.runResultModel(runResult)
+      .save();
   }
 }

@@ -1,7 +1,9 @@
 import { RunStatus } from '../enums/run-status.enum';
+import { Identifiable } from '../base/identifiable.dto';
 
-export class RunResultDto {
+export class RunResultDto extends Identifiable {
   status: RunStatus;
-  errors: string;
+  errorMessage: string;
+  resultId: string;
   description?: string;
 }
