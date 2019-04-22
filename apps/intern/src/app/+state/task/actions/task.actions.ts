@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 import { TaskDto } from '@intern/data';
-import { Pick } from '../../interfaces/pick.interface';
 
 export enum TaskActionTypes {
   ADD_TASK_LIST = '[Task] Add Task List',

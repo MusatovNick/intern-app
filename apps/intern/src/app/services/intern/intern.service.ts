@@ -7,6 +7,7 @@ import { UserDto } from '@intern/data';
 import { getAllInterns } from '../../+state/intern/selectors/intern.selectors';
 import { filter, switchMapTo, take } from 'rxjs/operators';
 import { AddInternList } from '../../+state/intern/actions/intern.actions';
+import { InternState } from '../../+state/intern/reducers/intern.reducer';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,14 +18,14 @@ export class InternService {
   ) { }
 
   public getAllInterns$(): Observable<UserDto[]> {
-      const checkStoreInterns$ = this.store$.select(getAllInterns);
+      const checkStoreInterns$: Observable<UserDto[]> = this.store$.select(getAllInterns);
 
     checkStoreInterns$.pipe(
       take(1),
       filter((intern: UserDto[]) => !!intern),
-      switchMapTo(this.backendService.get$('/user', {}))
+      switchMapTo(this.backendService.get$<UserDto>('/user', {}))
     ).subscribe(value => this.store$.dispatch(new AddInternList(value)));
-    //
+
     return checkStoreInterns$;
   }
 }

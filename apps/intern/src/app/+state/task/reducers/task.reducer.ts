@@ -7,7 +7,6 @@ import {
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { ActionReducer } from '@ngrx/store';
 import { TaskDto } from '@intern/data';
-import { Record } from '../../interfaces/record.interface';
 
 export const TASK_FEATURE_KEY = 'task';
 
