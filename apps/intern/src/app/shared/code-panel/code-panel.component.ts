@@ -19,7 +19,7 @@ export class CodePanelComponent implements OnInit, OnDestroy {
 
   @Output() readyStateChanged = new EventEmitter<void>();
   @Output() contentChanged = new EventEmitter<string>();
-  @Output() submitted = new EventEmitter<string>();
+  @Output() submit = new EventEmitter<string>();
 
   public file: MonacoFile = {
       uri: 'index.js',
@@ -66,7 +66,7 @@ export class CodePanelComponent implements OnInit, OnDestroy {
         take(1),
       )
       .subscribe(
-        ({ content }: MonacoFile) => this.submitted.next(content),
+        ({ content }: MonacoFile) => this.submit.next(content),
       );
   }
 
