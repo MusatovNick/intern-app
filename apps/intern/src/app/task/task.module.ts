@@ -11,7 +11,6 @@ import { TaskExecutionComponent } from './components/task-execution/task-executi
   imports: [
     CommonModule,
     SharedModule,
-    MonacoEditorModule,
   ],
   exports: [
     TaskExecutionComponent,
