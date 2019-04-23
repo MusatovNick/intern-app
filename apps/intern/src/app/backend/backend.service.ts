@@ -9,7 +9,7 @@ const BASE = 'api';
 export class BackendService {
   constructor(private http: HttpClient) {}
 
-  public post$<T>(url: string, body: any, options: HttpRequestOptions = {}): Observable<T> {
+  public post$<T>(url: string, body: any = {}, options: HttpRequestOptions = {}): Observable<T> {
     options.headers = this.addToken(options.headers);
     return this.http.post<T>(`${BASE}${url}`, body, options);
   }

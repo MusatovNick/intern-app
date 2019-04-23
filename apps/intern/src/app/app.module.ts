@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { MonacoEditorModule } from 'ngx-monaco';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -14,6 +15,7 @@ import { NxModule } from '@nrwl/nx';
 import { environment } from '../environments/environment';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { reducers } from './+state/global.reducers';
+import { TaskModule } from './task/task.module';
 
 @NgModule({
   imports: [
@@ -29,7 +31,9 @@ import { reducers } from './+state/global.reducers';
       {
         metaReducers: !environment.production ? [storeFreeze] : []
       }
-    )
+    ),
+    MonacoEditorModule.forRoot(),
+    TaskModule,
   ],
   declarations: [AppComponent, LoginComponent, HomeComponent],
   bootstrap: [AppComponent],

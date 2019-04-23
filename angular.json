@@ -22,7 +22,15 @@
             "main": "apps/intern/src/main.ts",
             "polyfills": "apps/intern/src/polyfills.ts",
             "tsConfig": "apps/intern/tsconfig.app.json",
-            "assets": ["apps/intern/src/favicon.ico", "apps/intern/src/assets"],
+            "assets": [
+              "apps/intern/src/favicon.ico",
+              "apps/intern/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/monaco-editor/min/vs",
+                "output": "libs/vs"
+              }
+            ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
@@ -136,7 +144,9 @@
             "outputPath": "dist/apps/intern-api",
             "main": "apps/intern-api/src/main.ts",
             "tsConfig": "apps/intern-api/tsconfig.app.json",
-            "assets": ["apps/intern-api/src/assets"]
+            "assets": [
+              "apps/intern-api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
