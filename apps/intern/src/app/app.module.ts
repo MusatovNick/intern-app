@@ -20,7 +20,6 @@ import { PracticesModule } from './modules/practices/practices.module';
 import { AnaliticsModule } from './modules/analitics/analitics.module';
 import { TaskModule } from './task/task.module';
 
-
 @NgModule({
   imports: [
     BrowserModule,
