@@ -5,14 +5,15 @@ import { AuthGuard } from './auth/guard/auth.guard';
 import { BoardsComponent } from './modules/boards/boards/boards.component';
 import { AnaliticsComponent } from './modules/analitics/analitics/analitics.component';
 import { PracticesComponent } from './modules/practices/practices/practices.component';
+import { RouterUrl } from './configs/router-url.enum';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
-      { path: 'boards', component: BoardsComponent },
-      { path: 'analitics', component: AnaliticsComponent },
-      { path: 'practices', component: PracticesComponent}
+  { path: '', redirectTo: RouterUrl.LOGIN, pathMatch: 'full' },
+  { path: RouterUrl.LOGIN, component: LoginComponent },
+  { path: RouterUrl.HOME, component: HomeComponent, canActivate: [AuthGuard], children: [
+      { path: RouterUrl.BOARDS, component: BoardsComponent },
+      { path: RouterUrl.ANALITICS, component: AnaliticsComponent },
+      { path: RouterUrl.PRACTICES, component: PracticesComponent}
   ]}
 ];
 
