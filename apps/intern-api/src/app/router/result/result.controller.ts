@@ -15,6 +15,12 @@ export class ResultController {
     return this.resultService.create(resultDto);
   }
 
+  @Post(':id')
+  @UseGuards(AuthGuard())
+  update(@Param('id') id: string, @Body() resultDto: ResultDto): Promise<ResultDto> {
+    return this.resultService.update(id, resultDto);
+  }
+
   @Get()
   @UseGuards(AuthGuard())
   findAll(): Promise<ResultDto[]> {

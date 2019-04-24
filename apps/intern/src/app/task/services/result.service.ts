@@ -20,6 +20,6 @@ export class ResultService {
   }
 
   public runResult$(id: string): Observable<RunResultDto> {
-    return this.backendService.post$<RunResultDto>(`/runner/${id}/run}`);
+    return this.backendService.post$<RunResultDto>(`/runner/${id}/run`);
   }
 }
