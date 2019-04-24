@@ -1,0 +1,25 @@
+<app-loader [isActive]="loader$ | async">
+  <div class="card border-secondary mb-3">
+    <div class="card-header">
+      <h5>{{ header }}</h5>
+      <div class="text-muted">{{ helperText }}</div>
+    </div>
+    <div class="card-body">
+      <monaco-editor
+        #editor
+        [file]="file"
+        (ready)="onReady($event)"
+        (fileChange)="onFileChange($event)"
+        theme="vs-dark">
+      </monaco-editor>
+    </div>
+    <div class="card-footer">
+      <button 
+        (click)="onSubmit()"
+        type="button"
+        class="btn btn-secondary">
+        {{ submitButtonText }}
+      </button>
+    </div>
+  </div>
+</app-loader>

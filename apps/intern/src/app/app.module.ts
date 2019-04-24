@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { MonacoEditorModule } from 'ngx-monaco';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -17,6 +18,8 @@ import { reducers } from './+state/global.reducers';
 import { BoardsModule } from './modules/boards/boards.module';
 import { PracticesModule } from './modules/practices/practices.module';
 import { AnaliticsModule } from './modules/analitics/analitics.module';
+import { TaskModule } from './task/task.module';
+
 
 @NgModule({
   imports: [
@@ -35,7 +38,9 @@ import { AnaliticsModule } from './modules/analitics/analitics.module';
       {
         metaReducers: !environment.production ? [storeFreeze] : []
       }
-    )
+    ),
+    MonacoEditorModule.forRoot(),
+    TaskModule,
   ],
   declarations: [AppComponent, LoginComponent, HomeComponent],
   bootstrap: [AppComponent],

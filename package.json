@@ -50,10 +50,13 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
+    "monaco-editor": "^0.12.0",
     "mongoose": "^5.5.1",
+    "ngx-monaco": "^0.8.0",
     "passport": "^0.4.0",
     "passport-http-bearer": "^1.0.1",
     "passport-jwt": "^4.0.0",
+    "puppeteer": "^1.14.0",
     "rxjs": "6.3.3",
     "swagger-ui-express": "^4.0.2",
     "zone.js": "^0.8.26"

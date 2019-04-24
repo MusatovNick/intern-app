@@ -26,7 +26,7 @@ export class PracticeService {
       take(1),
       filter((practice: PracticeDto[]) => !!practice),
       switchMapTo(this.backendService.get$<PracticeDto>('/practice', {}))
-    ).subscribe(value => this.store$.dispatch(new AddPracticeList(value)));
+    ).subscribe((practiceDto: PracticeDto) => this.store$.dispatch(new AddPracticeList(practiceDto)));
 
     return checkStorePractices$;
   }
