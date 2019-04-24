@@ -9,5 +9,5 @@ export class ResultDto extends Identifiable {
   @ApiModelProperty()
   authorId: string;
   @ApiModelProperty()
-  createdDate: string;
+  createdDate: number;
 }
