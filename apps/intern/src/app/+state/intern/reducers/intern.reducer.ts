@@ -8,6 +8,7 @@ import {
   RemoveIntern,
   UpdateIntern
 } from '../actions/intern.actions';
+import { Record } from '../../interfaces/record.interface';
 
 export const INTERN_FEATURE_KEY = 'intern';
 

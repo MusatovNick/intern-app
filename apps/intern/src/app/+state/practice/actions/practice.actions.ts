@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { PracticeDto } from '@intern/data';
+import { Pick } from '../../interfaces/pick.interface';
 
 export enum PracticeActionTypes {
   ADD_PRACTICE_LIST = '[Practice] Add Practice List',

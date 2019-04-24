@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { UserDto } from '@intern/data';
+import { Pick } from '../../interfaces/pick.interface';
 
 export enum InternActionTypes {
   ADD_INTERN_LIST = '[Intern] Add Intern List',

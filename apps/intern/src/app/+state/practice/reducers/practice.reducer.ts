@@ -8,6 +8,7 @@ import {
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { ActionReducer } from '@ngrx/store';
 import { PracticeDto } from '@intern/data';
+import { Record } from '../../interfaces/record.interface';
 
 export const PRACTICE_FEATURE_KEY = 'practice';
 
