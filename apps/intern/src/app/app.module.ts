@@ -19,6 +19,8 @@ import { BoardsModule } from './modules/boards/boards.module';
 import { PracticesModule } from './modules/practices/practices.module';
 import { AnaliticsModule } from './modules/analitics/analitics.module';
 import { TaskModule } from './task/task.module';
+import { InternsComponent } from './components/smart/interns/interns.component';
+import { InternsListComponent } from './components/dumb/interns-list/interns-list.component';
 
 @NgModule({
   imports: [
@@ -41,7 +43,7 @@ import { TaskModule } from './task/task.module';
     MonacoEditorModule.forRoot(),
     TaskModule,
   ],
-  declarations: [AppComponent, LoginComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, InternsComponent, InternsListComponent],
   bootstrap: [AppComponent],
   providers: []
 })

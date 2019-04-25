@@ -7,7 +7,7 @@ import { UserDto } from '@intern/data';
 import { getAllInterns } from '../../+state/intern/selectors/intern.selectors';
 import { filter, switchMapTo, take } from 'rxjs/operators';
 import { AddInternList } from '../../+state/intern/actions/intern.actions';
-import { InternState } from '../../+state/intern/reducers/intern.reducer';
+
 @Injectable({
   providedIn: 'root'
 })
