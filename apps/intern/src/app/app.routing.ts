@@ -9,16 +9,10 @@ import { InternsComponent } from './modules/boards/components/smart/interns/inte
 import { BoardsComponent } from './modules/boards/components/smart/boards/boards.component';
 
 const routes: Routes = [
-  { path: '',
-    redirectTo: RouterUrl.LOGIN,
-    pathMatch: 'full' },
-  { path: RouterUrl.LOGIN,
-    component: LoginComponent },
-  { path: RouterUrl.HOME,
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: '', redirectTo: RouterUrl.INTERNS, pathMatch: 'full'},
+  { path: '', redirectTo: RouterUrl.LOGIN, pathMatch: 'full' },
+  { path: RouterUrl.LOGIN, component: LoginComponent },
+  { path: RouterUrl.HOME, component: HomeComponent, canActivate: [AuthGuard], children: [
+    { path: '', redirectTo: RouterUrl.INTERNS, pathMatch: 'full'},
       { path: RouterUrl.INTERNS, component: InternsComponent},
       { path: RouterUrl.BOARDS, component: BoardsComponent },
       { path: RouterUrl.ANALITICS, component: AnaliticsComponent },

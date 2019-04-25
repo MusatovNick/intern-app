@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserDto } from '@intern/data';
 
 @Component({
@@ -6,10 +6,7 @@ import { UserDto } from '@intern/data';
   templateUrl: './interns-list.component.html',
   styleUrls: ['./interns-list.component.less']
 })
-export class InternsListComponent implements OnInit {
+export class InternsListComponent{
   @Input() internsList: UserDto[];
-  constructor() { }
-
-  ngOnInit() { }
 
 }
