@@ -25,8 +25,8 @@ const reducers: Record<InternActionTypes, ActionReducer<InternState>> = {
   [InternActionTypes.REMOVE_INTERN]: removeIntern,
 };
 
-export function addInternList(state: InternState, { payload }: AddInternList): InternState {
-  return internAdapter.addOne(payload, state);
+export function addInternList(state: InternState,  { payload }: AddInternList ): InternState {
+  return internAdapter.addMany(payload, state);
 }
 
 export function updateIntern(state: InternState, { payload }: UpdateIntern): InternState {
