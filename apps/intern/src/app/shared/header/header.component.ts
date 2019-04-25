@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.user$ = this.authDataService.getUserData$();
+
   }
 
   public logoutUser() {

@@ -10,7 +10,7 @@ export enum PracticeActionTypes {
 export class AddPracticeList implements Action {
   readonly type = PracticeActionTypes.ADD_PRACTICE_LIST;
 
-  constructor(public payload: PracticeDto) {}
+  constructor(public payload: PracticeDto[]) {}
 }
 
 export class RemovePractice implements Action {

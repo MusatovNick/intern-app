@@ -24,8 +24,8 @@ export class TaskService {
     checkStoreTasks$.pipe(
       take(1),
       filter((task: TaskDto[]) => !!task),
-      switchMapTo(this.backendService.get$<TaskDto>('/task', {}))
-    ).subscribe((taskDto: TaskDto) => this.store$.dispatch(new AddTaskList(taskDto)));
+      switchMapTo(this.backendService.get$<TaskDto[]>('/task', {}))
+    ).subscribe((taskDtoList: TaskDto[]) => this.store$.dispatch(new AddTaskList(taskDtoList)));
 
     return checkStoreTasks$;
   }
