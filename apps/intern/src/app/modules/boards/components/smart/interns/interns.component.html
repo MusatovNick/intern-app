@@ -1,3 +1,22 @@
+<div class="top-panel pt-3 px-3">
+  <div class="form-group row">
+    <div class="col-md-9">
+      <input
+        [formControl]="searchFilter"
+        type="text"
+        class="form-control"
+        placeholder="Search">
+    </div>
+    <div class="col-md-3">
+      <button
+        (click)="onInvite()"
+        type="button"
+        class="btn btn-block btn-primary">
+        Invite
+      </button>
+    </div>
+  </div>
+</div>
 <app-intern-item
   *ngFor="let internItem of interns$ | async"
   [intern]="internItem">
