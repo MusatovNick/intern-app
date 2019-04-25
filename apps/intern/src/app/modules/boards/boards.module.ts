@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BoardsComponent } from './boards/boards.component';
+import { BoardsComponent } from './components/smart/boards/boards.component';
 
 @NgModule({
-  declarations: [BoardsComponent],
+  declarations: [
+    BoardsComponent
+  ],
   imports: [
     CommonModule
   ]
