@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoaderComponent } from './loader/loader.component';
 import { CodePanelComponent } from './code-panel/code-panel.component';
 import { MonacoEditorModule } from 'ngx-monaco';
+import { BackendService } from './backend/backend.service';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -22,5 +23,8 @@ const COMPONENTS = [
   exports: [
     ...COMPONENTS
   ],
+  providers: [
+    BackendService,
+  ]
 })
 export class SharedModule { }

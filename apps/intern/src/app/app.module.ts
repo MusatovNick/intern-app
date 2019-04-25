@@ -6,7 +6,6 @@ import { MonacoEditorModule } from 'ngx-monaco';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { routing } from './app.routing';
-import { BackendModule } from './backend/backend.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from './shared/shared.module';
@@ -19,15 +18,12 @@ import { BoardsModule } from './modules/boards/boards.module';
 import { PracticesModule } from './modules/practices/practices.module';
 import { AnaliticsModule } from './modules/analitics/analitics.module';
 import { TaskModule } from './task/task.module';
-import { InternsComponent } from './components/smart/interns/interns.component';
-import { InternsListComponent } from './components/dumb/interns-list/interns-list.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     routing,
-    BackendModule,
     AuthModule,
     SharedModule,
     BoardsModule,
@@ -43,7 +39,11 @@ import { InternsListComponent } from './components/dumb/interns-list/interns-lis
     MonacoEditorModule.forRoot(),
     TaskModule,
   ],
-  declarations: [AppComponent, LoginComponent, HomeComponent, InternsComponent, InternsListComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+  ],
   bootstrap: [AppComponent],
   providers: []
 })

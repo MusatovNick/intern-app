@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { GlobalState } from '../../+state/global.reducers';
 import { Store } from '@ngrx/store'
-import { BackendService } from '../../backend/backend.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { PracticeDto } from '@intern/data';
 import { filter, switchMapTo, take } from 'rxjs/operators';
 import { AddPracticeList } from '../../+state/practice/actions/practice.actions';
 import { getAllPractices } from '../../+state/practice/selectors/practice.selectors';
-import { PracticeState } from '../../+state/practice/reducers/practice.reducer';
+import { BackendService } from '../../shared/backend/backend.service';
 
 @Injectable({
   providedIn: 'root'

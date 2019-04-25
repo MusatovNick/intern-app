@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
-import { BackendService } from '../../backend/backend.service';
 import { AuthDataDto } from '@intern/data';
 import { Router } from '@angular/router';
 import { LocalStorage } from '../../configs/local-storage';
 import { AuthDataService } from './auth-data.service';
+import { BackendService } from '../../shared/backend/backend.service';
 
 @Injectable()
 export class AuthService {

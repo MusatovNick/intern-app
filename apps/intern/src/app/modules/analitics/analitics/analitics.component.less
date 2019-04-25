@@ -1,4 +1,5 @@
-@import '../../../../assets/contants.less';
+@import '../../../../assets/constants.less';
+
 
 .core-container {
   width: 100%;
@@ -13,8 +14,19 @@
   border-right: 1px solid @border-base-color;
 }
 
+:host{
+  width: 100%;
+}
+
 .main-bar {
   height: 100%;
   width: 100%;
   background: @bg-base-color;
+  padding: 20px;
+}
+
+.core-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
 }

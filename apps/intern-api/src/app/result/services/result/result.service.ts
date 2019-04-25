@@ -16,6 +16,12 @@ export class ResultService {
       .save();
   }
 
+  async update(id: string, practiceDto: ResultDto): Promise<ResultDto> {;
+    return await this.resultModel
+      .findOneAndUpdate({ _id: id }, practiceDto)
+      .exec();
+  }
+
   async findById(id: string): Promise<ResultDto> {
     const item: ResultDto = await this.resultModel
       .findById(id)
@@ -37,6 +43,12 @@ export class ResultService {
   async findByUserId(authorId: string): Promise<ResultDto[]> {
     return await this.resultModel
       .find(query<ResultDto>({ authorId }))
+      .exec();
+  }
+
+  async findByTaskId(taskId: string): Promise<ResultDto[]> {
+    return await this.resultModel
+      .find(query<ResultDto>({ taskId }))
       .exec();
   }
 }

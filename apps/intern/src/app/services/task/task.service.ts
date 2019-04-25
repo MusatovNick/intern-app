@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BackendService } from '../../backend/backend.service';
 import { GlobalState } from '../../+state/global.reducers';
 import { filter, switchMapTo, take } from 'rxjs/operators';
-import { TaskDto } from '@intern/data';
+import { TaskDto, ResultDto } from '@intern/data';
 import { Observable } from 'rxjs/internal/Observable';
 import { getAllTasks } from '../../+state/task/selectors/task.selectors';
 import { AddTaskList } from '../../+state/task/actions/task.actions';
-import { TaskState } from '../../+state/task/reducers/task.reducer';
+import { BackendService } from '../../shared/backend/backend.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +28,9 @@ export class TaskService {
     ).subscribe((taskDto: TaskDto) => this.store$.dispatch(new AddTaskList(taskDto)));
 
     return checkStoreTasks$;
+  }
+
+  public getTaskResults$(taskId: string): Observable<ResultDto[]> {
+    return this.backendService.get$<ResultDto[]>(`/task/${taskId}/results`);
   }
 }
