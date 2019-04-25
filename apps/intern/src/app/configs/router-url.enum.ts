@@ -5,4 +5,5 @@ export enum RouterUrl {
   BOARDS = 'boards',
   PRACTICES = 'practices',
   ANALITICS = 'analitics',
+  INTERNS = 'interns'
 }
