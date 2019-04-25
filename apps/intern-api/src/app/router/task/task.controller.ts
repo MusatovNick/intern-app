@@ -17,6 +17,12 @@ export class TaskController {
   async create(@Body() taskDto: TaskDto): Promise<TaskDto> {
     return this.taskService.create(taskDto);
   }
+
+  @Post(':id')
+  @UseGuards(AuthGuard())
+  async update(@Param('id') id: string, @Body() taskDto: TaskDto): Promise<TaskDto> {
+    return this.taskService.update(id, taskDto);
+  }
   
   @Get()
   @UseGuards(AuthGuard())

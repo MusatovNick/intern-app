@@ -15,6 +15,12 @@ export class TaskService {
     return await new this.taskModel(taskDto).save();
   }
 
+  async update(id: string, taskDto: TaskDto): Promise<TaskDto> {;
+    return await this.taskModel
+      .findOneAndUpdate({ _id: id }, taskDto)
+      .exec();
+  }
+
   async findById(id: string): Promise<TaskDto> {
     const item: TaskDto = await this.taskModel
       .findById(id)
