@@ -10,7 +10,7 @@ export enum InternActionTypes {
 export class AddInternList implements Action {
   readonly type = InternActionTypes.ADD_INTERN_LIST;
 
-  constructor(public payload: UserDto[]) {}
+  constructor(public payload: UserDto) {}
 }
 
 export class RemoveIntern implements Action {
