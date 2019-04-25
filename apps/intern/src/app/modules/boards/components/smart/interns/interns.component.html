@@ -1,1 +1,5 @@
-<app-interns-list *ngFor="let interns of interns$ | async" [internsList]="interns"></app-interns-list>
+<app-intern-item
+  *ngFor="let internItem of interns$ | async"
+  [intern]="internItem">
+</app-intern-item>
+
