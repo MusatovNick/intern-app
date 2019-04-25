@@ -13,6 +13,8 @@ export class UserService {
   ) {}
 
   async create(userDto: UserDto): Promise<UserDto> {
+    userDto.createdDate = Date.now();
+
     return await new this.userModel(userDto).save();
   }
 

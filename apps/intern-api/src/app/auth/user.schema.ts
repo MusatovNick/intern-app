@@ -9,6 +9,7 @@ export const UserSchema = new mongoose.Schema(schema<UserDto>({
   password: String,
   role: String,
   teacherId: String,
+  createdDate: Number,
 }));
 
 export const USER_SCHEMA_NAME = 'user';

@@ -15,4 +15,6 @@ export class UserDto extends Identifiable {
   role: RoleType;
   @ApiModelProperty()
   teacherId: string;
+  @ApiModelProperty()
+  createdDate: number;
 }
