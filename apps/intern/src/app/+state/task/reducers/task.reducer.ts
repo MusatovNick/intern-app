@@ -25,7 +25,7 @@ const reducers: Record<TaskActionTypes, ActionReducer<TaskState>> = {
 };
 
 export function addTaskList(state: TaskState, { payload }: AddTaskList): TaskState {
-  return tasksAdapter.addOne(payload, state);
+  return tasksAdapter.addMany(payload, state);
 }
 
 export function updateTask(state: TaskState, { payload }: UpdateTask): TaskState {

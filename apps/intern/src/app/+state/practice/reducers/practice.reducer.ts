@@ -26,7 +26,7 @@ const reducers: Record<PracticeActionTypes, ActionReducer<PracticeState>> = {
 };
 
 export function addPracticeList(state: PracticeState, { payload }: AddPracticeList): PracticeState {
-  return practicesAdapter.addOne(payload, state);
+  return practicesAdapter.addMany(payload, state);
 }
 
 export function updatePractice(state: PracticeState, { payload }: UpdatePractice): PracticeState {
