@@ -10,6 +10,6 @@ export class InternsListComponent implements OnInit {
   @Input() internsList: UserDto[];
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
 }
