@@ -23,7 +23,7 @@ export class InternService {
     checkStoreInterns$.pipe(
       take(1),
       filter((intern: UserDto[]) => !!intern),
-      switchMapTo(this.backendService.get$<UserDto>('/user', {}))
+      switchMapTo(this.backendService.get$<UserDto>('/user/intern', {}))
     ).subscribe((userDto: UserDto) => this.store$.dispatch(new AddInternList(userDto)));
 
     return checkStoreInterns$;
