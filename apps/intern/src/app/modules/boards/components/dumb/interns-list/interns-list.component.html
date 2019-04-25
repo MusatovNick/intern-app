@@ -1,7 +1,5 @@
-<div class="bdr-bottom">
-  <ul *ngFor="let interns of internsList">
-    <li>{{interns.email}}</li>
-    <li>{{interns.role}}</li>
-  </ul>
-</div>
+<app-intern-item 
+  *ngFor="let internItem of internsList"
+  [intern]="internItem">
+</app-intern-item>
 
